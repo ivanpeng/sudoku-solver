@@ -88,3 +88,15 @@ class TestFullHouseAlgorithm(unittest.TestCase):
         self.assertEqual(res.board[3][6], 8)
         self.assertEqual(res.board[3][7], 7)
         self.assertEqual(res.board[3][8], 6)
+
+
+class TestNakedSingleAlgorithm(unittest.TestCase):
+
+    def test_naked_single_solves_board(self):
+        pass
+
+
+class TestHiddenSingleAlgorithm(unittest.TestCase):
+
+    def test_hidden_single_solves_board(self):
+        pass
