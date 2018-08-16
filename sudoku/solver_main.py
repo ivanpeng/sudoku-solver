@@ -3,7 +3,7 @@ import argparse
 
 from sudoku.models import Sudoku
 
-from sudoku.algorithms import HiddenSingle, NakedSingle, FullHouse
+from sudoku.algorithms import HiddenSingle, FullHouse
 
 
 class SolverRunner:
@@ -48,8 +48,7 @@ class SolverRunner:
             else:
                 algorithm_idx = 0
                 self.sudoku = new_state
-
-            solved = self.is_solved(self.sudoku.board)
+                solved = self.is_solved(self.sudoku.board)
             iterations += 1
         if not solved:
             return False
@@ -60,9 +59,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="A sudoku solver command-line interface")
     parser.add_argument("board", type=str, help="A string representation of the board")
 
-    board_str = "86..2.......7...59.............6.8...4.........53....7..........2....6....75.9..."
+    board_str = "5.3.......89..75.242..316..7..81....8.14.59.6....63..8..437..516.81..49.......2.7"
     sudoku = Sudoku(board_str)
-    algorithms = [FullHouse, NakedSingle, HiddenSingle]
+    print(sudoku)
+    algorithms = [FullHouse, HiddenSingle]
     solver = SolverRunner(sudoku, algorithms)
     res = solver.run_solver()
     print(res)

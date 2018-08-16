@@ -2,7 +2,7 @@ import unittest
 
 from sudoku.models import Sudoku, CellPossibilities
 
-from sudoku.algorithms import get_row, get_col, get_box, FullHouse, _remove_generic, remove_possibilities
+from sudoku.algorithms import get_row, get_col, get_box, FullHouse, _remove_generic, remove_possibilities, HiddenSingle
 
 
 class TestAlgorithms(unittest.TestCase):
@@ -90,13 +90,31 @@ class TestFullHouseAlgorithm(unittest.TestCase):
         self.assertEqual(res.board[3][8], 6)
 
 
-class TestNakedSingleAlgorithm(unittest.TestCase):
-
-    def test_naked_single_solves_board(self):
-        pass
-
-
 class TestHiddenSingleAlgorithm(unittest.TestCase):
 
-    def test_hidden_single_solves_board(self):
+    def test_count_occurrences_is_correct(self):
+        array_of_sets = [{1, 2, 3}, {1, 2}, {1}]
+        hs = HiddenSingle()
+        c = hs._count_occurrence_in_set(array_of_sets, 1)
+        self.assertEqual(c, 3)
+        c = hs._count_occurrence_in_set(array_of_sets, 3)
+        self.assertEqual(c, 1)
+
+    def test_count_occurrences_exits_at_1(self):
+        array_of_sets = [{1, 2, 3}, {1, 2}, {1}]
+        hs = HiddenSingle()
+        c = hs._count_all_occurrences_in_set(array_of_sets)
+        self.assertEqual(c, 3)
+
+    def test_hidden_single_finds_one_result(self):
+        board_str = "5.3.......89..75.242..316..7..81....8.14.59.6....63..8..437..516.81..49.......2.7"
+        sudoku = Sudoku(board_str)
+        hs = HiddenSingle()
+        res = hs.solve(sudoku)
+        self.assertEqual(res.board[0][1], 1)
+
+
+class TestNakedDoubleAlgorithm(unittest.TestCase):
+
+    def test_naked_single_solves_board(self):
         pass
