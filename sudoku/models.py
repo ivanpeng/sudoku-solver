@@ -1,5 +1,5 @@
 # There is a possibility we can replace board with a list of cells, but I'll leave it for now
-from exceptions import BoardInputException
+from sudoku.exceptions import BoardInputException
 
 
 class Sudoku:

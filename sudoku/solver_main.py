@@ -1,6 +1,9 @@
-from algorithms import HiddenSingle, NakedSingle, FullHouse
-from models import Sudoku
 import copy
+import argparse
+
+from sudoku.models import Sudoku
+
+from sudoku.algorithms import HiddenSingle, NakedSingle, FullHouse
 
 
 class SolverRunner:
@@ -54,6 +57,9 @@ class SolverRunner:
             return True
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="A sudoku solver command-line interface")
+    parser.add_argument("board", type=str, help="A string representation of the board")
+
     board_str = "86..2.......7...59.............6.8...4.........53....7..........2....6....75.9..."
     sudoku = Sudoku(board_str)
     algorithms = [FullHouse, NakedSingle, HiddenSingle]

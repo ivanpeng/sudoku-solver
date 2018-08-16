@@ -1,7 +1,8 @@
 import unittest
 
-from algorithms import get_row, get_col, get_box, FullHouse, _remove_generic, remove_possibilities
-from models import Sudoku, CellPossibilities
+from sudoku.models import Sudoku, CellPossibilities
+
+from sudoku.algorithms import get_row, get_col, get_box, FullHouse, _remove_generic, remove_possibilities
 
 
 class TestAlgorithms(unittest.TestCase):
